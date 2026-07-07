@@ -1,6 +1,9 @@
 package Framework;
 
+import java.util.List;
+
 public interface ScoreStrategy {
-    void calculateScore(char answer, char chosen);
+    boolean calculateScore(char answer, char chosen);
     void showScore();
+    List<String> returnResults();
 }

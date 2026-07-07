@@ -10,6 +10,7 @@ public class Quiz {
     List<Question> questions = qs.generateQuestions();
 
     public void gameplay(){
+        UI_App ui = new UI_App();
         Score score = new Score();
         Scanner input = new Scanner(System.in);
         System.out.println("Bem vindo ao quiz de conhecimentos gerais! Vamos testar suas habilidades!");
@@ -31,5 +32,9 @@ public class Quiz {
             numQuestion++;
         }
         score.showScore();
+    }
+
+    public List<Question> get_questions_list(){
+        return questions;
     }
 }

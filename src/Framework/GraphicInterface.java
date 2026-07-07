@@ -3,7 +3,7 @@ package Framework;
 import java.util.ArrayList;
 import java.util.List;
 
-public class InterfaceGrafica {
+public class GraphicInterface {
     public String getTextQuestion(Question q){
         return q.getStatement();
     }
@@ -14,6 +14,4 @@ public class InterfaceGrafica {
         }
         return list;
     }
-
-
 }

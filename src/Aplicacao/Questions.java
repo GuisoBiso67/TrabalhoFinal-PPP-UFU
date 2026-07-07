@@ -46,10 +46,6 @@ public class Questions implements FactoryQuestion {
         return questions;
     }
 
-    public Questions(){
-
-    }
-
     public void printAllQuestions() {
         int numQuestion = 1;
         for (Question q : questions) {
