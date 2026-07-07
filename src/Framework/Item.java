@@ -12,4 +12,8 @@ public class Item {
     public String getText() {
         return text;
     }
+
+    public boolean getCorrect() {
+        return correct;
+    }
 }

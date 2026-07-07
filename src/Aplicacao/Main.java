@@ -7,8 +7,7 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        Questions quiz = new Questions();
-        quiz.createQuestions();
-        quiz.printQuestions();
+        Quiz quiz = new Quiz();
+        quiz.gameplay();
     }
 }
