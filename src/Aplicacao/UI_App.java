@@ -51,7 +51,6 @@ public class UI_App extends JFrame {
                     JOptionPane.showMessageDialog(null, "Por favor, selecione uma alternativa.");
                     return;
                 }
-
                 // descobre qual JRadioButton foi clicado para pegar a letra do usuario;
                 char letraUsuario = ' ';
                 for (java.util.Enumeration<AbstractButton> buttons = items_group.getElements(); buttons.hasMoreElements();) {
@@ -61,20 +60,16 @@ public class UI_App extends JFrame {
                         break;
                     }
                 }
-
                 boolean isCorrect = s.calculateScore(letraUsuario, correctLetter);
-
                 if (isCorrect) {
                     JOptionPane.showMessageDialog(null, "Acertou!");
                 } else {
                     JOptionPane.showMessageDialog(null, "Resposta incorreta! A alternativa certa era: " + correctLetter);
                 }
-
                 currentQuestionIndex++;
                 loadQuestion(currentQuestionIndex);
             }
         });
-
         // carrega a primeira pergunta assim que a janela abre
         loadQuestion(currentQuestionIndex);
         setVisible(true);

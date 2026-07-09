@@ -5,15 +5,23 @@ import Framework.*;
 import java.util.List;
 import java.util.Scanner;
 
-public class Quiz {
+public class Quiz extends QuizTemplate{
     Questions qs = new Questions();
     List<Question> questions = qs.generateQuestions();
+    Score score = new Score();
 
+    @Override
+    public void menu() {
+        System.out.println("==========================================");
+        System.out.println("Bem vindo ao quiz de conhecimentos gerais!");
+        System.out.println("Vamos testar suas habilidades...");
+        System.out.println("==========================================");
+    }
+
+    @Override
     public void gameplay(){
         UI_App ui = new UI_App();
-        Score score = new Score();
         Scanner input = new Scanner(System.in);
-        System.out.println("Bem vindo ao quiz de conhecimentos gerais! Vamos testar suas habilidades!");
         int numQuestion = 1;
         for (Question q : questions) {
             System.out.println(numQuestion + ") " + q.getStatement());
@@ -31,6 +39,10 @@ public class Quiz {
             score.calculateScore(answer, correctLetter);
             numQuestion++;
         }
+    }
+
+    @Override
+    public void ending_score() {
         score.showScore();
     }
 
