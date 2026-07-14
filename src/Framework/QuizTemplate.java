@@ -21,10 +21,4 @@ public abstract class QuizTemplate {
     public void end_program(){
         System.exit(0);
     }
-
-    /*
-    public List<Question> getQuestions(){
-        return questionsList;
-    }
-    */
 }

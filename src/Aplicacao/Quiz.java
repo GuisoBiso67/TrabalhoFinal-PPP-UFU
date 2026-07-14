@@ -36,7 +36,7 @@ public class Quiz extends QuizTemplate{
             }
             System.out.println("Qual a sua resposta?");
             char answer = input.next().charAt(0);
-            score.calculateScore(answer, correctLetter);
+            score.calculateScore(answer, correctLetter, 0);
             numQuestion++;
         }
     }

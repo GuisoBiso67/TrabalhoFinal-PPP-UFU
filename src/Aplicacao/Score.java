@@ -11,7 +11,7 @@ public class Score implements ScoreStrategy {
     int correct = 0;
     int incorrect = 0;
     @Override
-    public boolean calculateScore(char answer, char chosen) {
+    public boolean calculateScore(char answer, char chosen, int secondsLeft) {
         if(answer == chosen) {
             correct += 10;
             return true;
