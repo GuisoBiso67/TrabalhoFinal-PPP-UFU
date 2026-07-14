@@ -11,7 +11,7 @@ import java.util.List;
 public class UI_App extends JFrame {
     GraphicInterface gi = new GraphicInterface();
     Quiz quiz = new Quiz();
-    ScoreStrategy s =  new TimeBasedScore();
+    ScoreStrategy score;
     List<Question> questions = quiz.get_questions_list();
 
     private int currentQuestionIndex = 0;
@@ -26,7 +26,8 @@ public class UI_App extends JFrame {
     private ButtonGroup items_group;
     private JButton btnResponder;
 
-    public UI_App() {
+    public UI_App(ScoreStrategy scoreStrategy) {
+        this.score = scoreStrategy;
         setTitle("Quiz de Conhecimentos Gerais");
         setSize(500, 450);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -87,7 +88,7 @@ public class UI_App extends JFrame {
                     gameTimer.stop();
                     JOptionPane.showMessageDialog(null, "O tempo acabou para esta pergunta!");
                     // se o tempo acabar conta como erro;
-                    s.calculateScore(' ', correctLetter, 0);
+                    score.calculateScore(' ', correctLetter, 0);
 
                     currentQuestionIndex++;
                     loadQuestion(currentQuestionIndex);
@@ -121,7 +122,7 @@ public class UI_App extends JFrame {
             }
         }
         // passa a resposta do usuario, a correta e o tempo restante para a estratégia
-        boolean isCorrect = s.calculateScore(letraUsuario, correctLetter, timeLeft);
+        boolean isCorrect = score.calculateScore(letraUsuario, correctLetter, timeLeft);
         if (isCorrect) {
             JOptionPane.showMessageDialog(null, "Acertou! Restavam " + timeLeft + " segundos.");
         } else {
@@ -137,7 +138,7 @@ public class UI_App extends JFrame {
         if (index >= questions.size()) {
             if (gameTimer != null) gameTimer.stop();
 
-            List<String> resultados = s.returnResults();
+            List<String> resultados = score.returnResults();
             StringBuilder mensagemFinal = new StringBuilder("Fim do Quiz! Obrigado por jogar.\n\n");
             for (String linha : resultados) {
                 mensagemFinal.append(linha).append("\n");
