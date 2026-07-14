@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class Quiz extends QuizTemplate{
     Questions qs = new Questions();
     List<Question> questions = qs.generateQuestions();
-    Score score = new Score();
+    ScoreStrategy score = new SimpleScore();
 
     @Override
     public void menu() {
@@ -20,7 +20,7 @@ public class Quiz extends QuizTemplate{
 
     @Override
     public void gameplay(){
-        UI_App ui = new UI_App();
+        UI_App ui = new UI_App(score);
         Scanner input = new Scanner(System.in);
         int numQuestion = 1;
         for (Question q : questions) {
@@ -48,5 +48,10 @@ public class Quiz extends QuizTemplate{
 
     public List<Question> get_questions_list(){
         return questions;
+    }
+
+    @Override
+    public void setScoreStrategy(ScoreStrategy scoreStrategy){
+        score = scoreStrategy;
     }
 }
