@@ -5,11 +5,11 @@ import Framework.*;
 import java.util.List;
 import java.util.Scanner;
 
-public class GeneralKnowledgeQuiz extends QuizTemplate{
+public class WorldCupQuiz extends QuizTemplate{
     List<Question> questions;
-    ScoreStrategy score = new SimpleScore();
+    ScoreStrategy score = new TimeBasedScore();
 
-    public GeneralKnowledgeQuiz(List<Question> questions){
+    public WorldCupQuiz(List<Question> questions){
         this.questions = questions;
     }
 

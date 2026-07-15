@@ -27,38 +27,44 @@ public class UI_App extends JFrame {
     private JButton btnResponder;
 
     public UI_App(List<Question> questions, ScoreStrategy scoreStrategy) {
-        this.quiz = new GeneralKnowledgeQuiz(questions);
+        this.quiz = new WorldCupQuiz(questions);
         this.questions = quiz.get_questions_list();
         this.score = scoreStrategy;
-        setTitle("Quiz de Conhecimentos Gerais");
-        setSize(500, 450);
+        setTitle("Quiz sobre Copa do Mundo");
+        setSize(520, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null); // centralizar janela
-        setLayout(new BorderLayout(10, 10));
 
-        JPanel topPanel = new JPanel(new BorderLayout());
+        setLayout(new BorderLayout(15, 15));
 
-        Question qt = questions.get(currentQuestionIndex);
-
-        lblPergunta = new JLabel(gi.getTextQuestion(qt), SwingConstants.CENTER);
-        lblPergunta.setFont(new Font("Arial", Font.BOLD, 16));
-
-        // label do timer no canto direito
         lblTimer = new JLabel("Tempo: 30s ", SwingConstants.RIGHT);
         lblTimer.setFont(new Font("Arial", Font.BOLD, 14));
         lblTimer.setForeground(Color.RED);
-        topPanel.add(lblPergunta, BorderLayout.CENTER);
-        topPanel.add(lblTimer, BorderLayout.EAST);
+        lblTimer.setBorder(BorderFactory.createEmptyBorder(10,10,0,15));
+        add(lblTimer, BorderLayout.NORTH);
+
+        JPanel center_panel = new JPanel(new BorderLayout(10,15));
+        center_panel.setBorder(BorderFactory.createEmptyBorder(0,20,10,20));
+
+        Question qt = questions.get(currentQuestionIndex);
+        lblPergunta = new JLabel(gi.getTextQuestion(qt), SwingConstants.CENTER);
+        lblPergunta.setFont(new Font("Arial", Font.BOLD, 16));
+        atualizarTextoPergunta(gi.getTextQuestion(qt)); // quebra de linha para pergunta grande;
 
         items_panel = new JPanel();
-        items_panel.setLayout(new GridLayout(4, 1, 1, 1)); // 4 linhas e 1 coluna
+        items_panel.setLayout(new GridLayout(4, 1, 8, 8));
+
+        center_panel.add(lblPergunta, BorderLayout.NORTH);
+        center_panel.add(items_panel, BorderLayout.CENTER);
+
+        add(center_panel, BorderLayout.CENTER);
 
         items_group = new ButtonGroup();
         btnResponder = new JButton("Confirmar Resposta");
 
-        add(topPanel, BorderLayout.NORTH);
-        add(items_panel, BorderLayout.CENTER);
-        add(addBottomPanel(), BorderLayout.SOUTH);
+        JPanel bottomPanel = addBottomPanel();
+        bottomPanel.setBorder(BorderFactory.createEmptyBorder(0, 20, 15, 20));
+        add(bottomPanel, BorderLayout.SOUTH);
 
         initTimer();
 
@@ -145,7 +151,7 @@ public class UI_App extends JFrame {
             for (String linha : resultados) {
                 mensagemFinal.append(linha).append("\n");
             }
-            JOptionPane.showMessageDialog(null, mensagemFinal.toString(), "Resultados do Quiz", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, mensagemFinal.toString(), "Resultados: ", JOptionPane.INFORMATION_MESSAGE);
 
             btnResponder.setEnabled(false); // desativa o botao;
             return;
@@ -156,7 +162,7 @@ public class UI_App extends JFrame {
         // pega a pergunta atual da lista;
         Question qt = questions.get(index);
         // atualiza o texto do topo;
-        lblPergunta.setText((index + 1) + ") " + gi.getTextQuestion(qt));
+        atualizarTextoPergunta((index + 1) + ") " + gi.getTextQuestion(qt));
         // cria os novos RadioButtons para a pergunta atual;
         char letter = 'a';
         correctLetter = ' ';
@@ -174,5 +180,9 @@ public class UI_App extends JFrame {
         items_panel.repaint();
 
         resetTimer();
+    }
+
+    private void atualizarTextoPergunta(String texto) {
+        lblPergunta.setText("<html><body style='text-align: center; width: 350px;'>" + texto + "</body></html>");
     }
 }

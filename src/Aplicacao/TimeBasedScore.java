@@ -34,7 +34,7 @@ public class TimeBasedScore implements ScoreStrategy {
     @Override
     public List<String> returnResults() {
         List<String> results = new ArrayList<>(history);
-        results.add("Pontuação Final Total: " + totalScore);
+        results.add("Pontuação final: " + totalScore + "pts");
         return results;
     }
 }

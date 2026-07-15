@@ -10,9 +10,7 @@ public class Question {
     public Question(String question, List<Item> items) {
         this.question = question;
         this.items = new ArrayList<>();
-        for(Item item : items){
-            this.items.add(item);
-        }
+        this.items.addAll(items);
     }
 
     public String getStatement() {
