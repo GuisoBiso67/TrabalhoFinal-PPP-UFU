@@ -5,10 +5,13 @@ import Framework.*;
 import java.util.List;
 import java.util.Scanner;
 
-public class Quiz extends QuizTemplate{
-    Questions qs = new Questions();
-    List<Question> questions = qs.generateQuestions();
+public class GeneralKnowledgeQuiz extends QuizTemplate{
+    List<Question> questions;
     ScoreStrategy score = new SimpleScore();
+
+    public GeneralKnowledgeQuiz(List<Question> questions){
+        this.questions = questions;
+    }
 
     @Override
     public void menu() {
@@ -20,7 +23,7 @@ public class Quiz extends QuizTemplate{
 
     @Override
     public void gameplay(){
-        UI_App ui = new UI_App(score);
+        UI_App ui = new UI_App(questions, score);
         Scanner input = new Scanner(System.in);
         int numQuestion = 1;
         for (Question q : questions) {
@@ -46,6 +49,7 @@ public class Quiz extends QuizTemplate{
         score.showScore();
     }
 
+    @Override
     public List<Question> get_questions_list(){
         return questions;
     }
