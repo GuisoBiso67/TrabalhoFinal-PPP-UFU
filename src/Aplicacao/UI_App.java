@@ -10,9 +10,9 @@ import java.util.List;
 
 public class UI_App extends JFrame {
     GraphicInterface gi = new GraphicInterface();
-    Quiz quiz = new Quiz();
+    QuizTemplate quiz;
     ScoreStrategy score;
-    List<Question> questions = quiz.get_questions_list();
+    List<Question> questions;
 
     private int currentQuestionIndex = 0;
     private char correctLetter = ' ';
@@ -26,7 +26,9 @@ public class UI_App extends JFrame {
     private ButtonGroup items_group;
     private JButton btnResponder;
 
-    public UI_App(ScoreStrategy scoreStrategy) {
+    public UI_App(List<Question> questions, ScoreStrategy scoreStrategy) {
+        this.quiz = new GeneralKnowledgeQuiz(questions);
+        this.questions = quiz.get_questions_list();
         this.score = scoreStrategy;
         setTitle("Quiz de Conhecimentos Gerais");
         setSize(500, 450);
