@@ -4,8 +4,9 @@ import Framework.*;
 
 public class Main {
     public static void main(String[] args) {
-        Quiz quiz = new Quiz();
-        quiz.setScoreStrategy(new SimpleScore());
-        quiz.quiz();
+        QuizFactory GKFabrica = new QuizFactoryGK();
+        QuizTemplate GK = GKFabrica.criarQuiz();
+        GK.setScoreStrategy(new SimpleScore());
+        GK.quiz();
     }
 }
