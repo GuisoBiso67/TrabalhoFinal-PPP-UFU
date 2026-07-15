@@ -1,5 +1,7 @@
 package Framework;
 
+import java.util.List;
+
 public abstract class QuizTemplate {
     //private List<Question> questionsList;
 
@@ -7,6 +9,7 @@ public abstract class QuizTemplate {
     abstract public void gameplay();
     abstract public void ending_score();
     abstract public void setScoreStrategy(ScoreStrategy scoreStrategy);
+    abstract public List<Question> get_questions_list();
 
     public void quiz(){
         menu();
