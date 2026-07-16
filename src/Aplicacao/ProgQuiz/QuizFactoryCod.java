@@ -1,7 +1,6 @@
-package Aplicacao.Coding;
+package Aplicacao.ProgQuiz;
 
-import Aplicacao.WorldCup.WorldCupQuestions;
-import Aplicacao.WorldCup.WorldCupQuiz;
+import Aplicacao.WCQuiz.*;
 import Framework.QuizFactory;
 import Framework.QuizTemplate;
 

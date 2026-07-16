@@ -1,4 +1,4 @@
-package Aplicacao.Coding;
+package Aplicacao.ProgQuiz;
 
 import Framework.Item;
 import Framework.Question;
@@ -10,8 +10,6 @@ import java.util.List;
 
 public class CodingQuestions implements QuestionsGenerator {
     List<Question> questions = new ArrayList<>();
-
-
     @Override
     public List<Question> generateQuestions() {
     Question q1 = new Question("Qual padrão de projeto é usado para garantir que uma classe tenha apenas uma instância em todo o ciclo de vida da aplicação e forneça um ponto de acesso global a ela?", new ArrayList<>(Arrays.asList(

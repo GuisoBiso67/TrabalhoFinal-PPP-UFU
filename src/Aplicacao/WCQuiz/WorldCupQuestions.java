@@ -1,4 +1,4 @@
-package Aplicacao.WorldCup;
+package Aplicacao.WCQuiz;
 
 import Framework.*;
 
@@ -72,7 +72,7 @@ public class WorldCupQuestions implements QuestionsGenerator {
         )));
         questions.add(q8);
 
-        Question q9 = new Question("Qual joagador eh o maior campeao da historia das copas?", new ArrayList<>(Arrays.asList(
+        Question q9 = new Question("Qual jogador eh o maior campeao da historia das copas?", new ArrayList<>(Arrays.asList(
                 new Item("Maradona", false),
                 new Item("Pele", true),
                 new Item("Klose", false),

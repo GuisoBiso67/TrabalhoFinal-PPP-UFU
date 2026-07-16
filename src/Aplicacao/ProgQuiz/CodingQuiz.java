@@ -1,29 +1,31 @@
-package Aplicacao;
+package Aplicacao.ProgQuiz;
 
+import Aplicacao.*;
 import Framework.*;
 
 import java.util.List;
 import java.util.Scanner;
 
-public class WorldCupQuiz extends QuizTemplate{
-    List<Question> questions;
-    ScoreStrategy score = new TimeBasedScore();
+public class CodingQuiz extends QuizTemplate{
+    CodingQuestions qs = new CodingQuestions();
+    List<Question> questions = qs.generateQuestions();
+    ScoreStrategy score = new Score();
 
-    public WorldCupQuiz(List<Question> questions){
+
+    public CodingQuiz(List<Question> questions) {
         this.questions = questions;
     }
 
     @Override
     public void menu() {
         System.out.println("==========================================");
-        System.out.println("Bem vindo ao quiz de conhecimentos gerais!");
+        System.out.println("Bem vindo ao quiz de Programacao!");
         System.out.println("Vamos testar suas habilidades...");
         System.out.println("==========================================");
     }
 
     @Override
     public void gameplay(){
-        UI_App ui = new UI_App(questions, score);
         Scanner input = new Scanner(System.in);
         int numQuestion = 1;
         for (Question q : questions) {
@@ -39,7 +41,13 @@ public class WorldCupQuiz extends QuizTemplate{
             }
             System.out.println("Qual a sua resposta?");
             char answer = input.next().charAt(0);
+            if(answer == correctLetter){
+                System.out.println("Resposta correta!");
+            }else{
+                System.out.println("Resposta incorreta! Alternativa certa: " + correctLetter);
+            }
             score.calculateScore(answer, correctLetter, 0);
+            System.out.println("------------------------------------------------------------");
             numQuestion++;
         }
     }
@@ -49,12 +57,10 @@ public class WorldCupQuiz extends QuizTemplate{
         score.showScore();
     }
 
-    @Override
     public List<Question> get_questions_list(){
         return questions;
     }
 
-    @Override
     public void setScoreStrategy(ScoreStrategy scoreStrategy){
         score = scoreStrategy;
     }

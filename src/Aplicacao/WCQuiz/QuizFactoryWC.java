@@ -1,4 +1,4 @@
-package Aplicacao;
+package Aplicacao.WCQuiz;
 
 import Framework.*;
 

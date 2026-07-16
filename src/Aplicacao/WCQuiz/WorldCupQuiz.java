@@ -1,33 +1,30 @@
-package Aplicacao.Coding;
+package Aplicacao.WCQuiz;
 
-import Framework.Item;
-import Framework.Question;
-import Framework.QuizTemplate;
-import Framework.ScoreStrategy;
+import Aplicacao.*;
+import Framework.*;
 
 import java.util.List;
 import java.util.Scanner;
 
-public class CodingQuiz extends QuizTemplate{
-    CodingQuestions qs = new CodingQuestions();
-    List<Question> questions = qs.generateQuestions();
-    ScoreStrategy score = new Score();
+public class WorldCupQuiz extends QuizTemplate{
+    List<Question> questions;
+    ScoreStrategy score = new TimeBasedScore();
 
-
-    public CodingQuiz(List<Question> questions) {
+    public WorldCupQuiz(List<Question> questions){
         this.questions = questions;
     }
 
     @Override
     public void menu() {
         System.out.println("==========================================");
-        System.out.println("Bem vindo ao quiz de Programacao!");
-        System.out.println("Vamos testar suas habilidades...");
+        System.out.println("Bem vindo ao quiz sobre Copa do Mundo");
+        System.out.println("Vamos testar seus conhecimentos futebolisticos...");
         System.out.println("==========================================");
     }
 
     @Override
     public void gameplay(){
+        UI_App ui = new UI_App(questions, score);
         Scanner input = new Scanner(System.in);
         int numQuestion = 1;
         for (Question q : questions) {
@@ -53,10 +50,12 @@ public class CodingQuiz extends QuizTemplate{
         score.showScore();
     }
 
+    @Override
     public List<Question> get_questions_list(){
         return questions;
     }
 
+    @Override
     public void setScoreStrategy(ScoreStrategy scoreStrategy){
         score = scoreStrategy;
     }

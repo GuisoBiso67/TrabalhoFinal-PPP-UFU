@@ -1,5 +1,6 @@
 package Aplicacao;
 
+import Aplicacao.WCQuiz.WorldCupQuiz;
 import Framework.*;
 
 import javax.swing.*;
