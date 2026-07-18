@@ -1,6 +1,6 @@
 package Aplicacao.ProgQuiz;
 
-import Aplicacao.*;
+import Aplicacao.Score.TimeBasedScore;
 import Framework.*;
 
 import java.util.List;

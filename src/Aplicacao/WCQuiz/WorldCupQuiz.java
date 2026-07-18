@@ -1,6 +1,6 @@
 package Aplicacao.WCQuiz;
 
-import Aplicacao.*;
+import Aplicacao.Score.SimpleScore;
 import Framework.*;
 
 import java.util.List;
