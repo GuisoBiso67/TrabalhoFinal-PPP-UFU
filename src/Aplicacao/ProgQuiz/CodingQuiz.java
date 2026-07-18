@@ -7,10 +7,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class CodingQuiz extends QuizTemplate{
-    CodingQuestions qs = new CodingQuestions();
-    List<Question> questions = qs.generateQuestions();
-    ScoreStrategy score = new Score();
-
+    List<Question> questions;
+    ScoreStrategy score = new TimeBasedScore();
 
     public CodingQuiz(List<Question> questions) {
         this.questions = questions;
@@ -26,6 +24,7 @@ public class CodingQuiz extends QuizTemplate{
 
     @Override
     public void gameplay(){
+        UI_App ui = new UI_App(questions, score);
         Scanner input = new Scanner(System.in);
         int numQuestion = 1;
         for (Question q : questions) {

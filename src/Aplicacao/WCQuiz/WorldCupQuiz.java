@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class WorldCupQuiz extends QuizTemplate{
     List<Question> questions;
-    ScoreStrategy score = new TimeBasedScore();
+    ScoreStrategy score = new SimpleScore();
 
     public WorldCupQuiz(List<Question> questions){
         this.questions = questions;
@@ -24,7 +24,7 @@ public class WorldCupQuiz extends QuizTemplate{
 
     @Override
     public void gameplay(){
-        UI_App ui = new UI_App(questions, score);
+        //UI_App ui = new UI_App(questions, score);
         Scanner input = new Scanner(System.in);
         int numQuestion = 1;
         for (Question q : questions) {
@@ -40,6 +40,11 @@ public class WorldCupQuiz extends QuizTemplate{
             }
             System.out.println("Qual a sua resposta?");
             char answer = input.next().charAt(0);
+            if(answer == correctLetter){
+                System.out.println("Resposta correta!");
+            }else{
+                System.out.println("Resposta incorreta! Alternativa certa: " + correctLetter);
+            }
             score.calculateScore(answer, correctLetter, 0);
             numQuestion++;
         }

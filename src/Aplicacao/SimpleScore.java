@@ -12,7 +12,7 @@ public class SimpleScore implements ScoreStrategy {
     public boolean calculateScore(char answer, char chosen, int secondsLeft) {
         if(answer == chosen) {
             total++;
-            correct ++;
+            correct++;
             return true;
         }else{
             total++;
@@ -22,7 +22,7 @@ public class SimpleScore implements ScoreStrategy {
 
     @Override
     public void showScore() {
-        System.out.println("Score final:" + correct + "/" + total);
+        System.out.println("Score final: " + correct + "/" + total);
         System.out.println("Respostas corretas: " + correct);
         System.out.println("Respostas incorretas: " + (total - correct));
     }

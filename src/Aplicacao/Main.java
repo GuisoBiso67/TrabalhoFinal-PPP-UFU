@@ -9,12 +9,13 @@ public class Main {
         /*
         QuizFactory WCFactory = new QuizFactoryWC();
         QuizTemplate WC = WCFactory.criarQuiz();
-        WC.setScoreStrategy(new TimeBasedScore());
+        WC.setScoreStrategy(new SimpleScore());
         WC.quiz();*/
+
 
         QuizFactory CodFactory = new QuizFactoryCod();
         QuizTemplate Cod = CodFactory.criarQuiz();
-        Cod.setScoreStrategy(new SimpleScore());
+        Cod.setScoreStrategy(new TimeBasedScore());
         Cod.quiz();
     }
 }
