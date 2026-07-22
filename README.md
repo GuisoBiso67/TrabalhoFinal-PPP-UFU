@@ -8,6 +8,12 @@ Para isso, o projeto combina três padrões de projeto clássicos (GoF):
 - **Template Method** — para o fluxo de execução de um quiz
 - **Strategy** — para as diferentes formas de calcular a pontuação
 
+## Autores
+
+- Diogo Pontes Vieira Costa 12421BCC053
+- Guilherme Silva Cotrim 12421BCC001
+- Pedro Paulo Verri Marquez 12421BCC072
+
 ## Sumário
 
 - [Visão geral da arquitetura](#visão-geral-da-arquitetura)
